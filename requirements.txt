@@ -1,0 +1,7 @@
+pytorch
+torchvision
+pyserial
+xlsxwriter
+xlrd
+pyqt5
+opencv-python
