@@ -496,6 +496,7 @@ class MainTab(QWidget):
             if fileImg.endswith(".JPG") or fileImg.endswith(".jpg") or fileImg.endswith(".png") or fileImg.endswith(".PNG") or fileImg.endswith(".jpeg") or fileImg.endswith(".JPEG"):
                 path_of_image = path.join(self.imageFolderPath60, fileImg)
                 path_of_processed = path.join(path.abspath(PROCESSED_IMAGE_FOLDER), "60")
+                makedirs(path_of_processed, exist_ok=True)
             else:
                 return
         
@@ -617,6 +618,7 @@ class MainTab(QWidget):
             if fileImg.endswith(".JPG") or fileImg.endswith(".jpg") or fileImg.endswith(".png") or fileImg.endswith(".PNG") or fileImg.endswith(".jpeg") or fileImg.endswith(".JPEG"):
                 path_of_image = path.join(self.imageFolderPath90, fileImg)
                 path_of_processed = path.join(path.abspath(PROCESSED_IMAGE_FOLDER), "90")
+                makedirs(path_of_processed, exist_ok=True)
             else:
                 return
 
@@ -722,6 +724,7 @@ class MainTab(QWidget):
             if fileImg.endswith(".JPG") or fileImg.endswith(".jpg") or fileImg.endswith(".png") or fileImg.endswith(".PNG") or fileImg.endswith(".jpeg") or fileImg.endswith(".JPEG"):
                 path_of_image = path.join(self.imageFolderPath120, fileImg)
                 path_of_processed = path.join(path.abspath(PROCESSED_IMAGE_FOLDER), "120")
+                makedirs(path_of_processed, exist_ok=True)
             else:
                 return
 
@@ -775,7 +778,9 @@ class MainTab(QWidget):
         now = datetime.now()
         dailyCsv = str(now.strftime("%Y_%m_%d"))
         currentTime = str(now.strftime("%H:%M_%d/%m/%Y"))
-        nameCSV = path.join("./CUSTOMIZE_4_USER", "RESULT", groupStage, dailyCsv + ".xlsx")
+        folderCSV = path.join("./CUSTOMIZE_4_USER", "RESULT", groupStage)
+        makedirs(folderCSV, exist_ok=True)
+        nameCSV = path.join(folderCSV, dailyCsv + ".xlsx")
 
         if int(resultPredict) >90:
             statusFermentation = "Đ"

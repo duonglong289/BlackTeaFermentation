@@ -4,7 +4,7 @@ from PyQt5.QtCore import Qt, QTimer
 
 from os import listdir, remove
 from os import path as os_path
-from os import environ
+from os import environ, makedirs
 
 from torch.nn import Linear, ReLU, Module, MSELoss
 from torch.nn.init import xavier_uniform_, zeros_, calculate_gain, kaiming_uniform_
@@ -308,6 +308,7 @@ class TrainingTab(QWidget):
         print("(INFO) COPYING IMAGES ...")
         def copyImageTraining(src, grade):
             path_dataset = os_path.join("./CUSTOMIZE_4_USER/TRAINING/Data/", groupStage, grade)
+            makedirs(path_dataset, exist_ok=True)
             dst_files = listdir(path_dataset)
             # remove old images
             for filesrc in dst_files:
